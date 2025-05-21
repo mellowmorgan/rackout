@@ -66,3 +66,5 @@ group :test do
 end
 
 gem "simple_calendar", "~> 3.1"
+
+gem "pundit", "~> 2.5"
