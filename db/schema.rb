@@ -10,9 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_18_220425) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_20_211036) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "earnings", force: :cascade do |t|
+    t.string "title", null: false
+    t.text "description"
+    t.decimal "amount", null: false
+    t.string "category", null: false
+    t.bigint "event_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_earnings_on_event_id"
+  end
 
   create_table "events", force: :cascade do |t|
     t.string "title", null: false
@@ -25,6 +36,17 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_18_220425) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_events_on_user_id"
+  end
+
+  create_table "expenses", force: :cascade do |t|
+    t.string "title", null: false
+    t.text "description"
+    t.decimal "amount", null: false
+    t.string "category", null: false
+    t.bigint "event_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_expenses_on_event_id"
   end
 
   create_table "users", force: :cascade do |t|

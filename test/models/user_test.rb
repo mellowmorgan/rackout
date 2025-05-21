@@ -1,14 +1,12 @@
 require "test_helper"
 
 class UserTest < ActiveSupport::TestCase
-
-  fake_email = "test@test.test"
-  user_name = "test_user"
-  # test "the truth" do
-  #   assert true
-  # end
-
-
+  
+  fake_email = "test1@test.test"
+  user_name = "test1_user"
+  test "the truth" do
+    assert true
+  end
 
   test "user create fails if no password" do
     user = User.new(email: fake_email, username: user_name)

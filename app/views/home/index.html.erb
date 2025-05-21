@@ -10,9 +10,15 @@
   <h1>Rackout</h1>
   <h3>The app for tracking your bag</h3>
 
-  <%= month_calendar(events: @events) do |date| %>
+  <%= month_calendar(events: @events) do |date, events| %>
     <div class="day">
       <%= date.day %>
     </div>
+    <% events.each do |event| %>
+      <div>
+        <%= event.title %>
+      </div>
+    <% end %>
+
   <% end %>
 </div>
