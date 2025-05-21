@@ -1,0 +1,7 @@
+hello <%= @user.username %>
+
+<div>
+  <%= link_to "Edit Account", edit_user_registration_path(@user) %>
+
+  <%= button_to "Delete Account", @user, method: :delete %>
+</div>

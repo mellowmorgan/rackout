@@ -3,7 +3,8 @@ class ExpensesController < ApplicationController
 
   # GET /expenses or /expenses.json
   def index
-    @expenses = Expense.all
+
+    @expenses = Event.find_by!(id: params[:event_id],user_id: params[:user_id]).expenses.all
   end
 
   # GET /expenses/1 or /expenses/1.json
@@ -65,6 +66,6 @@ class ExpensesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def expense_params
-      params.expect(expense: [ :title, :description, :amount, :category ])
+      params.expect(expense: [ :title, :description, :amount, :category, :event_id ])
     end
 end

@@ -16,7 +16,7 @@
     </div>
     <% events.each do |event| %>
       <div>
-        <%= event.title %>
+        <%= link_to event.title, user_event_path(user_id: current_user.id, id: event.id) %>
       </div>
     <% end %>
 

@@ -3,7 +3,7 @@ class EarningsController < ApplicationController
 
   # GET /earnings or /earnings.json
   def index
-    @earnings = Earning.all
+    @earnings = Earnings.where(event_id: params[:event_id])
   end
 
   # GET /earnings/1 or /earnings/1.json
@@ -65,6 +65,6 @@ class EarningsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def earning_params
-      params.expect(earning: [ :title, :description, :amount, :category ])
+      params.expect(earning: [ :title, :description, :amount, :category, :event_id ])
     end
 end
