@@ -3,23 +3,30 @@ class EventsController < ApplicationController
 
   # GET /events or /events.json
   def index
-    binding.pry
     # @events = Event.where(user: current_user, start_)
     #WAIT let's do this later, but later feed date through params and filter by day of month it belongs to
+    redirect_to root_path
   end
 
   # GET /events/1 or /events/1.json
   def show
     @event = Event.find(params[:id])
+    @user = User.find(params[:user_id])
   end
 
   # GET /events/new
   def new
     @event = Event.new
+    @user = User.find(params[:user_id])
+
+    if params[:is_work].present? && ActiveRecord::Type::Boolean.new.cast(params[:is_work]) == true
+      @event.is_work = true
+    end
   end
 
   # GET /events/1/edit
   def edit
+    @user = User.find(params[:user_id])
   end
 
   # POST /events or /events.json
@@ -28,7 +35,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.save
-        format.html { redirect_to user_event_path(@event), notice: "Event was successfully created." }
+        format.html { redirect_to root_path, notice: "Event was successfully created." }
         format.json { render :show, status: :created, location: @event }
       else
         format.html { render :new, status: :unprocessable_entity }
