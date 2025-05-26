@@ -2,11 +2,11 @@ class EventsController < ApplicationController
   before_action :set_event, only: %i[ show edit update destroy ]
 
   # GET /events or /events.json
-  def index
-    # @events = Event.where(user: current_user, start_)
-    #WAIT let's do this later, but later feed date through params and filter by day of month it belongs to
-    redirect_to root_path
-  end
+  # def index
+  #   @events = Event.where(user: current_user, start_)
+
+  #   redirect_to root_path
+  # end
 
   # GET /events/1 or /events/1.json
   def show

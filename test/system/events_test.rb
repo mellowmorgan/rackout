@@ -2,17 +2,26 @@ require "application_system_test_case"
 
 class EventsTest < ApplicationSystemTestCase
   setup do
-    @event = events(:one)
+    @user = User.create!(username: "test", email: "test12@test.test", password: "test124")
+    @event = Event.create!(user: @user, title: "Penthouse night shift", description:"Friday night shift", location: "Penthouse Nola", start_time: Time.now, end_time: Time.now+8.hours, is_work:true)
   end
 
-  test "visiting the index" do
-    visit events_url
-    assert_selector "h1", text: "Events"
-  end
+  # test "visiting the index" do
+
+  #   visit events_url
+  #   assert_selector "h1", text: "Events"
+  # end
 
   test "should create event" do
-    visit events_url
-    click_on "New event"
+    visit root_url
+    click_on "Log in"
+    assert_text "Log in"
+    assert_text "Email"
+    fill_in 'Email', with: @user.email
+    fill_in 'Password', with: @user.password
+    click_button 'Log in'
+    assert_text "Signed in successfully."
+    click_on "Add Event"
 
     fill_in "Description", with: @event.description
     fill_in "End time", with: @event.end_time
@@ -23,11 +32,10 @@ class EventsTest < ApplicationSystemTestCase
     click_on "Create Event"
 
     assert_text "Event was successfully created"
-    click_on "Back"
   end
 
   test "should update Event" do
-    visit event_url(@event)
+    visit user_event_url(@user, @event)
     click_on "Edit this event", match: :first
 
     fill_in "Description", with: @event.description
@@ -39,11 +47,10 @@ class EventsTest < ApplicationSystemTestCase
     click_on "Update Event"
 
     assert_text "Event was successfully updated"
-    click_on "Back"
   end
 
   test "should destroy Event" do
-    visit event_url(@event)
+    visit user_event_url(@user, @event)
     click_on "Destroy this event", match: :first
 
     assert_text "Event was successfully destroyed"
