@@ -1,16 +1,12 @@
 require "application_system_test_case"
+require "test_helper"
 
 class EventsTest < ApplicationSystemTestCase
   setup do
-    @user = User.create!(username: "test", email: "test12@test.test", password: "test124")
-    @event = Event.create!(user: @user, title: "Penthouse night shift", description:"Friday night shift", location: "Penthouse Nola", start_time: Time.now, end_time: Time.now+8.hours, is_work:true)
+    @user = users(:one)
+    @event = events(:one)
+    @password = '125greetings'
   end
-
-  # test "visiting the index" do
-
-  #   visit events_url
-  #   assert_selector "h1", text: "Events"
-  # end
 
   test "should create event" do
     visit root_url
@@ -18,7 +14,7 @@ class EventsTest < ApplicationSystemTestCase
     assert_text "Log in"
     assert_text "Email"
     fill_in 'Email', with: @user.email
-    fill_in 'Password', with: @user.password
+    fill_in 'Password', with: @password
     click_button 'Log in'
     assert_text "Signed in successfully."
     click_on "Add Event"
