@@ -1,4 +1,4 @@
-<%= form_with(model:[@user,@event, earning]) do |form| %>
+<%= form_with(model:[@user, @event, earning]) do |form| %>
   <% if earning.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(earning.errors.count, "error") %> prohibited this earning from being saved:</h2>

@@ -1,13 +1,8 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-# one:
-#   title: MyString
-#   description: MyText
-#   amount: 9.99
-#   category: MyText
-
-# two:
-#   title: MyString
-#   description: MyText
-#   amount: 9.99
-#   category: MyText
+one:
+  title: Penthouse stage
+  description: Friday night-shift
+  amount: 40
+  category: stage fee
+  event: one

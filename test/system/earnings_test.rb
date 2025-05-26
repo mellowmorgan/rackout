@@ -12,7 +12,6 @@ class EarningsTest < ApplicationSystemTestCase
     click_on "Add Earning"
 
     fill_in "Amount", with: @earning.amount
-    # find('#dropdown-list').click
     find('#earning_category option', :text => @earning.category).click
     fill_in "Description", with: @earning.description
     fill_in "Title", with: @earning.title

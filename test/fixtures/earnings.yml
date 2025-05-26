@@ -6,9 +6,3 @@ one:
   amount: 409
   category: income
   event: one
-
-# two:
-#   title: MyString
-#   description: MyText
-#   amount: 9.99
-#   category: MyText
