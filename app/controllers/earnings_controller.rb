@@ -3,7 +3,7 @@ class EarningsController < ApplicationController
 
   # GET /earnings or /earnings.json
   def index
-    @earnings = Earnings.where(event_id: params[:event_id])
+    @earnings = Earning.where(event_id: params[:event_id])
   end
 
   # GET /earnings/1 or /earnings/1.json
@@ -13,23 +13,27 @@ class EarningsController < ApplicationController
   # GET /earnings/new
   def new
     @earning = Earning.new
+    @user = User.find(params[:user_id])
+    @event = Event.find(params[:event_id])
   end
 
   # GET /earnings/1/edit
   def edit
+    @user = User.find(params[:user_id])
+    @event = Event.find(params[:event_id])
   end
 
   # POST /earnings or /earnings.json
   def create
-    @earning = Earning.new(earning_params)
+    @event = Event.find(params[:event_id])
+    @user = User.find(params[:user_id])
+    @earning = @event.earnings.new(earning_params)
 
     respond_to do |format|
       if @earning.save
-        format.html { redirect_to @earning, notice: "Earning was successfully created." }
-        format.json { render :show, status: :created, location: @earning }
+        format.html { redirect_to user_event_path(@user, @event), notice: "Earning was successfully created." }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @earning.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -39,10 +43,8 @@ class EarningsController < ApplicationController
     respond_to do |format|
       if @earning.update(earning_params)
         format.html { redirect_to @earning, notice: "Earning was successfully updated." }
-        format.json { render :show, status: :ok, location: @earning }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @earning.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -53,7 +55,6 @@ class EarningsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to earnings_path, status: :see_other, notice: "Earning was successfully destroyed." }
-      format.json { head :no_content }
     end
   end
 

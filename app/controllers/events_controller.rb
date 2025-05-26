@@ -31,7 +31,8 @@ class EventsController < ApplicationController
 
   # POST /events or /events.json
   def create
-    @event = current_user.events.new(event_params)
+    @user = User.find(params[:user_id])
+    @event = @user.events.new(event_params)
 
     respond_to do |format|
       if @event.save
@@ -52,7 +53,7 @@ class EventsController < ApplicationController
         format.json { render :show, status: :ok, location: @event }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
+
       end
     end
   end
@@ -63,7 +64,6 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to root_path, status: :see_other, notice: "Event was successfully destroyed." }
-      format.json { head :no_content }
     end
   end
 

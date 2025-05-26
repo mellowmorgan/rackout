@@ -5,5 +5,5 @@ class Event < ApplicationRecord
   validates :title, presence: true
   validates :start_time, presence: true
   validates :is_work, presence: true
-  validates :user_id, presence: true
+  validates :user, presence: true
 end
