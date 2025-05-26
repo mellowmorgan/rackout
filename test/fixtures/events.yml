@@ -1,17 +1,10 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: 
-  description: MyText
-  location: MyText
+  title: Penthouse
+  description: Penthouse night shift
+  location: Penthouse New Orleans
   start_time: 2025-05-18 15:04:25
   end_time: 2025-05-18 15:04:25
-  is_work: false
-
-two:
-  title: MyString
-  description: MyText
-  location: MyText
-  start_time: 2025-05-18 15:04:25
-  end_time: 2025-05-18 15:04:25
-  is_work: false
+  is_work: true
+  user: one
