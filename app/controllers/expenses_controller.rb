@@ -1,14 +1,10 @@
 class ExpensesController < ApplicationController
   before_action :set_expense, only: %i[ show edit update destroy ]
 
-  # GET /expenses or /expenses.json
-  def index
-
-    @expenses = Event.find_by!(id: params[:event_id],user_id: params[:user_id]).expenses.all
-  end
-
   # GET /expenses/1 or /expenses/1.json
   def show
+    @event = @expense.event
+    @user = @event.user
   end
 
   # GET /expenses/new
@@ -20,8 +16,8 @@ class ExpensesController < ApplicationController
 
   # GET /expenses/1/edit
   def edit
-    @user = User.find(params[:user_id])
-    @event = Event.find(params[:event_id])
+    @event = @expense.event
+    @user = @event.user
   end
 
   # POST /expenses or /expenses.json
@@ -41,10 +37,11 @@ class ExpensesController < ApplicationController
 
   # PATCH/PUT /expenses/1 or /expenses/1.json
   def update
-
+    @event = @expense.event
+    @user = @event.user
     respond_to do |format|
       if @expense.update(expense_params)
-        format.html { redirect_to @xpense, notice: "Expense was successfully updated." }
+        format.html { redirect_to user_event_expense_path(@user, @event, @expense), notice: "Expense was successfully updated." }
       else
         format.html { render :edit, status: :unprocessable_entity }
       end
@@ -53,10 +50,12 @@ class ExpensesController < ApplicationController
 
   # DELETE /expenses/1 or /expenses/1.json
   def destroy
+    @event = @expense.event
+    @user = @event.user
     @expense.destroy!
 
     respond_to do |format|
-      format.html { redirect_to expenses_path, status: :see_other, notice: "Expense was successfully destroyed." }
+      format.html { redirect_to user_event_path(@user, @event), status: :see_other, notice: "Expense was successfully destroyed." }
     end
   end
 

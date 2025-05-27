@@ -1,13 +1,10 @@
 class EarningsController < ApplicationController
   before_action :set_earning, only: %i[ show edit update destroy ]
 
-  # GET /earnings or /earnings.json
-  def index
-    @earnings = Earning.where(event_id: params[:event_id])
-  end
-
   # GET /earnings/1 or /earnings/1.json
   def show
+    @event = @earning.event
+    @user = @event.user
   end
 
   # GET /earnings/new
@@ -18,9 +15,9 @@ class EarningsController < ApplicationController
   end
 
   # GET /earnings/1/edit
-  def edit
-    @user = User.find(params[:user_id])
-    @event = Event.find(params[:event_id])
+  def edit  
+    @event = @earning.event
+    @user = @event.user
   end
 
   # POST /earnings or /earnings.json
@@ -40,9 +37,11 @@ class EarningsController < ApplicationController
 
   # PATCH/PUT /earnings/1 or /earnings/1.json
   def update
+    @event = @earning.event
+    @user = @event.user
     respond_to do |format|
       if @earning.update(earning_params)
-        format.html { redirect_to @earning, notice: "Earning was successfully updated." }
+        format.html { redirect_to user_event_earning_path(@user,@event,@earning), notice: "Earning was successfully updated." }
       else
         format.html { render :edit, status: :unprocessable_entity }
       end
@@ -51,10 +50,12 @@ class EarningsController < ApplicationController
 
   # DELETE /earnings/1 or /earnings/1.json
   def destroy
+    @event = @earning.event
+    @user = @event.user
     @earning.destroy!
 
     respond_to do |format|
-      format.html { redirect_to earnings_path, status: :see_other, notice: "Earning was successfully destroyed." }
+      format.html { redirect_to user_event_path(@user, @event), status: :see_other, notice: "Earning was successfully destroyed." }
     end
   end
 

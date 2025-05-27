@@ -1,4 +1,4 @@
-# require "application_system_test_case"
+require "application_system_test_case"
 
 class ExpensesTest < ApplicationSystemTestCase
   setup do
@@ -20,24 +20,24 @@ class ExpensesTest < ApplicationSystemTestCase
     assert_text "Expense was successfully created"
   end
 
-#   test "should update Expense" do
-#     visit expense_url(@expense)
-#     click_on "Edit this expense", match: :first
+  test "should update Expense" do
+    visit user_event_expense_url(@user,@event,@expense)
+    click_on "Edit this expense", match: :first
 
-#     fill_in "Amount", with: @expense.amount
-#     fill_in "Category", with: @expense.category
-#     fill_in "Description", with: @expense.description
-#     fill_in "Title", with: @expense.title
-#     click_on "Update Expense"
+    fill_in "Amount", with: @expense.amount
+    find('#expense_category option', :text => @expense.category).click    
+    fill_in "Description", with: @expense.description
+    fill_in "Title", with: @expense.title
+    click_on "Update Expense"
 
-#     assert_text "Expense was successfully updated"
-#     click_on "Back"
-#   end
+    assert_text "Expense was successfully updated"
+    click_on "Back"
+  end
 
-#   test "should destroy Expense" do
-#     visit expense_url(@expense)
-#     click_on "Destroy this expense", match: :first
+  test "should destroy Expense" do
+    visit user_event_expense_url(@user,@event,@expense)
+    click_on "Destroy this expense", match: :first
 
-#     assert_text "Expense was successfully destroyed"
-#   end
+    assert_text "Expense was successfully destroyed"
+  end
 end

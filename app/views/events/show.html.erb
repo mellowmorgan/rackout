@@ -1,11 +1,32 @@
 <p style="color: green"><%= notice %></p>
-
+<h2><%= @event.start_time.to_date %></h2>
 <%= render @event %>
 
 <div>
   <%= link_to "Edit this event", edit_user_event_path(@user, @event) %>
 
   <%= button_to "Destroy this event", user_event_path(@user, @event), method: :delete %>
+</div>
+
+<h3>Earnings</h3>
+<div>
+  <% @event.earnings.each do |earning| %>
+    <%= render earning %>
+    <p>
+      <%= link_to "Show this earning", user_event_earning_path(@user, @event, earning) %>
+    </p>
+  <% end %>
+
+<h3>Expenses</h3>
+
+  <% @event.expenses.each do |expense| %>
+    <%= render expense %>
+    <p>
+      <%= link_to "Show this expense", user_event_expense_path(@user, @event, expense) %>
+    </p> 
+  <% end %>
+
+  Net earnings: <%= @event.earnings.sum(:amount) - @event.expenses.sum(:amount) %>
 </div>
 
 <div>
