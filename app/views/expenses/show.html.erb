@@ -4,7 +4,7 @@
 
 <div>
   <%= link_to "Edit this expense", edit_user_event_expense_path(@user,@event, @expense) %> |
-  <%= link_to "Back to event", user_event_expense_path(@user,@event) %>
+  <%= link_to "Back to event", user_event_path(@user,@event) %>
 
   <%= button_to "Destroy this expense", user_event_expense_path(@user,@event, @expense), method: :delete %>
 </div>

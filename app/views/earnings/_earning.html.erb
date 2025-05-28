@@ -4,10 +4,12 @@
     <%= earning.title %>
   </p>
 
-  <p>
-    <strong>Description:</strong>
-    <%= earning.description %>
-  </p>
+  <% if earning.description.present? %>
+    <p>
+      <strong>Description:</strong>
+      <%= earning.description %>
+    </p>
+  <% end %>
 
   <p>
     <strong>Amount:</strong>

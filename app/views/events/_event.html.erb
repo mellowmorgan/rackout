@@ -16,17 +16,18 @@
 
   <p>
     <strong>Start time:</strong>
-    <%= event.start_time %>
+    <%=  event.start_time.strftime('%B %e, %Y %l:%M %p') %>
   </p>
 
-  <p>
-    <strong>End time:</strong>
-    <%= event.end_time %>
-  </p>
+  <% if event.end_time %>
+    <p>
+      <strong>End time:</strong>
+      <%= event.end_time %>
+    </p>
+  <% end %>
 
   <p>
     <strong>Is work:</strong>
     <%= event.is_work %>
   </p>
-
 </div>

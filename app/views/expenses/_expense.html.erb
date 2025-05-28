@@ -4,10 +4,12 @@
     <%= expense.title %>
   </p>
 
-  <p>
-    <strong>Description:</strong>
-    <%= expense.description %>
-  </p>
+  <% if expense.description.present? %>
+    <p>
+      <strong>Description:</strong>
+      <%= expense.description %>
+    </p>
+  <% end %>
 
   <p>
     <strong>Amount:</strong>
