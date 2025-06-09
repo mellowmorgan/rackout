@@ -14,24 +14,54 @@
  
   <% if user_signed_in? %>
 
-    Monthly total after deductions: <%= current_total_month %>
+    Current monthly total: <%= current_total_month %>
     <%= button_to "Add Shift", new_user_event_path(user_id: current_user.id), params: { is_work: true}, method: :get %>
 
     <%= button_to "Add Event", new_user_event_path(user_id: current_user.id), method: :get %>
 
     <%= month_calendar(events: @events) do |date, events| %>
-      <div class="day">
-        <%= date.day %>
-      </div>
-      <% events.each do |event| %>
-        <div>
-          <%= link_to event.title, user_event_path(user_id: current_user.id, id: event.id) %>
+      <div class="calendar-day">
+        <div class="day text-center">
+          <%= date.day %>
         </div>
-      <% end %>
-
+        <% events.each do |event| %>
+          <div class="card-header">
+            <div class="card-title">
+              <%= link_to event.title, user_event_path(user_id: current_user.id, id: event.id) %>
+            </div>
+          </div>
+        <% end %>
+      </div>  
   <% end %>
+
+  <div id="myModal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <p>You have past shifts that need updating.</p>
+       <select id="eventsDropDown"></select>
+      <button id="updateBtn">Update</button>
+      <button id="dismissBtn">Dismiss</button>
+      <button id="dismissAllBtn">Dismiss All</button>
+    </div>
+  </div>
 
  <% end %>
 </div>
 
+<script type="importmap" data-turbo-track="reload">
+{
+"imports": {
+  "updateEventModal": "/updateEventModal.js"
+}}
+</script>
 
+<script type="text/javascript">
+
+</script>
+
+<script type="module">
+  import {updateModal} from "updateEventModal";
+
+  updateModal(<%= @events_need_updating&.html_safe %>);
+</script>

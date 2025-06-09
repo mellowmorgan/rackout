@@ -1,0 +1,15 @@
+{
+  "name": "app",
+  "private": true,
+  "dependencies": {
+    "@esbuild-plugins/node-modules-polyfill": "^0.2.2",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-router": "^7.3.0"
+  },
+"scripts": {
+  "build": "esbuild app/javascript/application.js --bundle --sourcemap --outdir=app/assets/builds --loader:.js=jsx --loader:.jsx=jsx",
+  "watch": "esbuild app/javascript/application.js --bundle --sourcemap --outdir=app/assets/builds --loader:.js=jsx --loader:.jsx=jsx --watch"
+}
+
+}

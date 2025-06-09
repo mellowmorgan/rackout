@@ -8,4 +8,13 @@ class Expense < ApplicationRecord
   validates :amount, presence: true
   validates :category, presence: true
   validates :category, inclusion: { in: CATEGORIES }
+  after_save :update_event
+
+  private
+    def update_event
+      event = self.event
+      if (event.is_work && event.earnings.any?) || !event.is_work
+        event.update!(dismiss: true)
+      end
+    end 
 end

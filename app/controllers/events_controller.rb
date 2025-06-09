@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   before_action :set_event, only: %i[ show edit update destroy ]
-
+  skip_before_action :verify_authenticity_token, only: :update
   # GET /events or /events.json
   # def index
   #   @events = Event.where(user: current_user, start_)
@@ -12,6 +12,9 @@ class EventsController < ApplicationController
   def show
     @event = Event.find(params[:id])
     @user = User.find(params[:user_id])
+    if @event.needs_updating?
+      flash.now.alert = "You are missing earnings/expenses for this event! Please Add."
+    end
   end
 
   # GET /events/new
@@ -49,11 +52,13 @@ class EventsController < ApplicationController
   def update
     respond_to do |format|
       if @event.update(event_params)
-        format.html { redirect_to user_event_path(@event), notice: "Event was successfully updated." }
-        format.json { render :show, status: :ok, location: @event }
+        format.json { 
+          render json: @event, status: :ok }
+        format.html { 
+          redirect_to user_event_path(@event), notice: "Event was successfully updated." }
+
       else
         format.html { render :edit, status: :unprocessable_entity }
-
       end
     end
   end
@@ -75,6 +80,6 @@ class EventsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def event_params
-      params.expect(event: [ :title, :description, :location, :start_time, :end_time, :is_work ])
+      params.expect(event: [ :title, :description, :location, :start_time, :end_time, :is_work, :dismiss ])
     end
 end

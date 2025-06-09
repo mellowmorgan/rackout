@@ -1,4 +1,7 @@
-<p style="color: green"><%= notice %></p>
+<div>
+    <%= link_to "Add Earning", new_user_event_earning_path(@user, @event) %> |
+    <%= link_to "Add Expense", new_user_event_expense_path(@user, @event) %>
+</div>
 <%= render @event %>
 
 <div>
@@ -28,7 +31,3 @@
   Net earnings: <%= @event.earnings.sum(:amount) - @event.expenses.sum(:amount) %>
 </div>
 
-<div>
-    <%= link_to "Add Earning", new_user_event_earning_path(@user, @event) %> |
-    <%= link_to "Add Expense", new_user_event_expense_path(@user, @event) %>
-</div>
