@@ -6,13 +6,14 @@ Rails.application.routes.draw do
   devise_for :users do
     delete "/users/sign_out" => "devise/sessions#destroy", :as => :destroy_user_session_path
   end
-
-  resources :users do
+  
+  resources :users, only: [:index] do
     resources :events do
       resources :earnings
       resources :expenses
     end
   end
+
   patch "dismiss_all", to: "home#dismiss_all"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

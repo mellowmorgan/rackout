@@ -15,7 +15,13 @@
  */
 
 body {
-  color: red !important;
+  color: black!important;
+  background-color: white;
+  background-size: cover;
+}
+
+h1{
+  color:black;
 }
 
 
@@ -52,9 +58,60 @@ body {
   font-weight: bold;
 }
 
+.box{
+  background-color:rgb(203, 196, 255);
+  padding: 15px;
+}
+
 .close:hover,
 .close:focus {
   color: #000;
   text-decoration: none;
   cursor: pointer;
+}
+
+
+.day.text-center{
+  border:none;
+} 
+.simple-calendar{
+  width: 88%;
+  text-align:center;
+  border-collapse:collapse;
+  border-spacing: 0;
+  border: 1px sold #ccc;
+  font-size:12px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #333;
+  background-color: #fff;
+}
+
+.simple-calendar time{
+  font-size: 20px;
+  font-weight:600;
+}
+.simple-calendar nav{
+  font-size:16px;
+  font-weight:600;
+}
+
+.day {
+  font-size:11px;
+  padding:5px;
+  font-weight: 550;
+  border:1px solid #ccc;
+  text-align:center;
+}
+
+.card-header{ 
+  padding:0px;
+  background-color:transparent;
+  border-bottom:none;
+}
+.simple-calendar th{
+  font-size:14px;
+}
+.calendar-day{
+  height:95px;
+  width:95px;
 }

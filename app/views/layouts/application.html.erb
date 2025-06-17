@@ -33,9 +33,23 @@
     <nav>
       <h1>Rackout</h1>
       <h3>The app for tracking your bag</h3>
+
+      <% if !user_signed_in? %>
+        <%= link_to "Log in", new_user_session_path %>
+        <%= link_to "Sign up", new_user_registration_path %>
+      <% end %>
+
+      <% if user_signed_in? %>
+        <%= button_to "Log Out", destroy_user_session_path, method: :delete  %>
+      <% end %>
     </nav>
-    <p class="notice"><%= notice %></p> 
-    <p class="alert"><%= alert %></p> 
+
+    <% flash.each do |key, value| %>
+
+      <div class="d-inline-block <%= flash_class(key) %>">
+        <%= value %>
+      </div><br />
+    <% end %>
     <%= yield %>
   </body>
 </html>
