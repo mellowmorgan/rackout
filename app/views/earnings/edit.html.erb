@@ -1,12 +1,17 @@
-<% content_for :title, "Editing earning" %>
+<div class="form-body">
+  <div class="form-container">
+    <% content_for :title, "Editing earning" %>
 
-<h1>Editing earning</h1>
+    <h1>Editing earning</h1>
 
-<%= render "form", earning: @earning %>
+    <%= render "form", earning: @earning %>
 
-<br>
+    <br>
 
-<div>
-  <%= link_to "Show this earning", user_event_earning_path(@user, @event, @earning) %> |
-  <%= link_to "Back to earnings", user_event_path(@user, @event) %>
+    <div>
+      <%= link_to "Show this earning", user_event_earning_path(@user, @event, @earning) %> |
+      <%= link_to "Back to earnings", user_event_path(@user, @event) %>
+    </div>
+  </div>
 </div>
+

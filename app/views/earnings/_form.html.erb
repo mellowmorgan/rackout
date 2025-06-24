@@ -11,27 +11,43 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
+  <div class="form-details">
+    <div class="input-box">
+      <span class="details">
+        <%= form.label :title %>
+      </span>
+      <%= form.text_field :title %>
+    </div>
+
+    <div class="input-box">
+      <span class="details">
+      <%= form.label :description, style: "display: block" %>
+      </span>
+      <%= form.text_field :description %>
+    </div>
+
+    <div class="input-box">
+      <span class="details">
+      <%= form.label :amount, style: "display: block" %>
+      </span>
+      <%= form.text_field :amount %>
+    </div>
+
+    <div class="input-box">
+      <span class="details">
+      <%= form.label :category, style: "display: block" %>
+      </span>
+      <%= form.select :category, options: Earning::CATEGORIES %>
+    </div>
+
   </div>
 
-  <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.textarea :description %>
-  </div>
-
-  <div>
-    <%= form.label :amount, style: "display: block" %>
-    <%= form.text_field :amount %>
-  </div>
-
-  <div>
-    <%= form.label :category, style: "display: block" %>
-    <%= form.select :category, options: Earning::CATEGORIES %>
-  </div>
-
-  <div>
+  <div class="button">
     <%= form.submit %>
   </div>
 <% end %>
+
+
+
+
+

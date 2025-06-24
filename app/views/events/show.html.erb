@@ -41,26 +41,18 @@
               </p> 
             <% end %>
       
-            Net earnings: <%= @event.earnings.sum(:amount) - @event.expenses.sum(:amount) %>
+
             </div>
+        </div>
+
+        <div class="row net-earnings">
+          <div class="col-12">
+            Net earnings: <%= @event.earnings.sum(:amount) - @event.expenses.sum(:amount) %>
+          </div>
         </div>
       </div>
     </div>
-    
-   
-
-    <div class="col-3">
-      <h3>Expenses</h3>
-
-      <% @event.expenses.each do |expense| %>
-        <%= render expense %>
-        <p>
-          <%= link_to "Show this expense", user_event_expense_path(@user, @event, expense) %>
-        </p> 
-      <% end %>
-
-      Net earnings: <%= @event.earnings.sum(:amount) - @event.expenses.sum(:amount) %>
-    </div>
+  
 
   </div>
 </div>

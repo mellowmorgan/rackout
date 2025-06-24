@@ -1,12 +1,17 @@
-<% content_for :title, "Editing expense" %>
+<div class="form-body">
+  <div class="form-container">
+    <% content_for :title, "Editing expense" %>
 
-<h1>Editing expense</h1>
+    <h1>Editing expense</h1>
 
-<%= render "form", expense: @expense %>
+    <%= render "form", expense: @expense %>
 
-<br>
+    <br>
 
-<div>
-  <%= link_to "Show this expense", user_event_expense_path(@user, @event, @expense) %> |
-  <%= link_to "Back to expenses", user_event_path(@user, @event) %>
+    <div>
+      <%= link_to "Show this expense", user_event_expense_path(@user, @event, @expense) %> |
+      <%= link_to "Back to expenses", user_event_path(@user, @event) %>
+    </div>
+  </div>
 </div>
+
