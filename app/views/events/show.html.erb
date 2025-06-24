@@ -1,33 +1,66 @@
-<div>
-    <%= link_to "Add Earning", new_user_event_earning_path(@user, @event) %> |
-    <%= link_to "Add Expense", new_user_event_expense_path(@user, @event) %>
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+
+      <div>
+          <%= link_to "Add Earning", new_user_event_earning_path(@user, @event) %> |
+          <%= link_to "Add Expense", new_user_event_expense_path(@user, @event) %>
+      </div>
+      <div>
+        <%= render @event %>
+  
+        <%= link_to "Edit this event", edit_user_event_path(@user, @event) %>
+
+        <%= button_to "Destroy this event", user_event_path(@user, @event), method: :delete %>
+      </div>
+    </div>
+
+
+    <div class="col-6" >
+      <div class="container">
+        <div class="row">
+          <div class="col-6">
+            <h3>Earnings</h3>
+            <div>
+              <% @event.earnings.each do |earning| %>
+                <%= render earning %>
+                <p>
+                  <%= link_to "Show this earning", user_event_earning_path(@user, @event, earning) %>
+                </p>
+              <% end %>
+            </div>
+          </div>
+            
+          <div class="col-6">
+            <h3>Expenses</h3>
+
+            <% @event.expenses.each do |expense| %>
+              <%= render expense %>
+              <p>
+                <%= link_to "Show this expense", user_event_expense_path(@user, @event, expense) %>
+              </p> 
+            <% end %>
+      
+            Net earnings: <%= @event.earnings.sum(:amount) - @event.expenses.sum(:amount) %>
+            </div>
+        </div>
+      </div>
+    </div>
+    
+   
+
+    <div class="col-3">
+      <h3>Expenses</h3>
+
+      <% @event.expenses.each do |expense| %>
+        <%= render expense %>
+        <p>
+          <%= link_to "Show this expense", user_event_expense_path(@user, @event, expense) %>
+        </p> 
+      <% end %>
+
+      Net earnings: <%= @event.earnings.sum(:amount) - @event.expenses.sum(:amount) %>
+    </div>
+
+  </div>
 </div>
-<%= render @event %>
-
-<div>
-  <%= link_to "Edit this event", edit_user_event_path(@user, @event) %>
-
-  <%= button_to "Destroy this event", user_event_path(@user, @event), method: :delete %>
-</div>
-
-<h3>Earnings</h3>
-<div>
-  <% @event.earnings.each do |earning| %>
-    <%= render earning %>
-    <p>
-      <%= link_to "Show this earning", user_event_earning_path(@user, @event, earning) %>
-    </p>
-  <% end %>
-
-<h3>Expenses</h3>
-
-  <% @event.expenses.each do |expense| %>
-    <%= render expense %>
-    <p>
-      <%= link_to "Show this expense", user_event_expense_path(@user, @event, expense) %>
-    </p> 
-  <% end %>
-
-  Net earnings: <%= @event.earnings.sum(:amount) - @event.expenses.sum(:amount) %>
-</div>
-

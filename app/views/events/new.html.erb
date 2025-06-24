@@ -1,7 +1,9 @@
-<% content_for :title, "New event" %>
+<div class="form-body">
+  <div class="form-container">
+    <% content_for :title, "Add Event" %>
 
-<h1>New event</h1>
+    <h1>Add Event</h1>
 
-<%= render "form", event: @event %>
-
-<%= link_to "Back home", root_path %>
+    <%= render "form", event: @event %>
+  </div>
+</div>

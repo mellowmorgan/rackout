@@ -3,7 +3,7 @@
   <% if user_signed_in? %>
   <div class="row">
   <div class="col-3">
-    Current monthly total: <%= current_total_month %>
+    <h5>Current monthly total: <%= current_total_month %></h5>
     <%= button_to "Add Shift", new_user_event_path(user_id: current_user.id), params: { is_work: true}, method: :get %>
 
     <%= button_to "Add Event", new_user_event_path(user_id: current_user.id), method: :get %>
@@ -17,7 +17,8 @@
         <% events.each do |event| %>
           <div class="card-header">
             <div class="card-title">
-              <%= link_to event.title, user_event_path(user_id: current_user.id, id: event.id) %>
+              
+              <%= link_to "#{event.start_time.strftime('%l:%M %p')} <b>#{event.title}<b>".html_safe, user_event_path(user_id: current_user.id, id: event.id) %>
             </div>
           </div>
         <% end %>

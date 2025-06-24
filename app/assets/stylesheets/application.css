@@ -13,17 +13,14 @@
 *= require simple_calendar  
 
  */
-
+nav{
+  font-family: Arial, Helvetica, sans-serif;
+}
 body {
   color: black!important;
-  background-color: white;
+  background: url("sky.jpg");
   background-size: cover;
 }
-
-h1{
-  color:black;
-}
-
 
 
 /* The Modal (background) */
@@ -75,11 +72,10 @@ h1{
   border:none;
 } 
 .simple-calendar{
-  width: 88%;
   text-align:center;
   border-collapse:collapse;
   border-spacing: 0;
-  border: 1px sold #ccc;
+  border: none;
   font-size:12px;
   font-family: Arial, Helvetica, sans-serif;
   color: #333;
@@ -93,6 +89,9 @@ h1{
 .simple-calendar nav{
   font-size:16px;
   font-weight:600;
+}
+.simple-calendar .calendar-heading{
+  padding:12px;
 }
 
 .day {
@@ -111,7 +110,113 @@ h1{
 .simple-calendar th{
   font-size:14px;
 }
-.calendar-day{
-  height:95px;
-  width:95px;
+
+.form-body{
+  display:flex;
+  justify-content: center;
+  align-items:center;
+  padding:10px;
+}
+.form-container{
+  max-width:700px;
+  width:100%;
+  background-color:white;
+  padding:25px 30px;
+  height: fit-content;
+}
+form .form-details{
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+form .form-details .input-box{
+  margin:20px 0 12px 0;
+  width: calc(100% / 2 - 20px);
+}
+.form-details .input-box .details{
+  display:block;
+  font-weight: 500;
+  margin-bottom:5px;
+}
+.form-details .input-box input{
+  height:45px;
+  width:100%;
+  outline:none;
+  border-radius:5px;
+  border: 1px solid #ccc;
+  padding-left:15px;
+  font-size:16px;
+}
+
+form .form-details .checkmark{
+  margin:20px 0 12px 0;
+  width: calc(100% / 2 - 20px);
+}
+.form-details .checkmark .details{
+  display:block;
+  font-weight: 500;
+  margin-bottom:5px;
+}
+.form-details .checkmark input{
+  width:18px;
+  height:45px;
+  padding:10px;
+  vertical-align: middle;
+  border-radius:5px;
+  border: 1px solid #ccc;
+}
+
+.button{
+  height: 45px;
+  margin:20px 0;
+
+}
+
+.button input{
+  color:white;
+  width:100%;
+  height:100%;
+  outline:none;
+  border:none;
+  font-size: 18px;
+  letter-spacing: 1px;
+  font-weight: 500;
+  border-radius: 5px;
+  background: url("sky.jpg");
+  background-size: cover;
+}
+
+ button{
+  font-size: 18px;
+  letter-spacing: 1px;
+  font-weight: 500;
+  border-radius: 5px;
+  padding:10px;
+  border:none;
+}
+.rackout-logo a{
+  letter-spacing: 2px;
+  text-decoration: none;
+  color:white !important;
+  font-weight:550;
+}
+nav h3{
+  color:white;
+}
+nav h4{
+  color:white;
+  font-weight:550;
+  letter-spacing: 1px;
+}
+body h5{
+  color:white; 
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+
+
+nav{
+  padding:16px;
+  margin-bottom:16px;
 }
