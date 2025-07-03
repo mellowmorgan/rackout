@@ -9,8 +9,10 @@
     <%= button_to "Add Event", new_user_event_path(user_id: current_user.id), method: :get, class: "home-left-button" %>
   </div>
   <div class="col-9">
+
+  
     <%= month_calendar(events: @events) do |date, events| %>
-      <div class="calendar-day" ondblclick="onCalDblClick(<%= date %>);">
+      <div class="calendar-day" ondblclick="onCalDblClick(<%= current_user.id %>, <%= date.year %>+'-'+<%= date.month %>+'-'+<%= date.day %>);">
         <div class="day text-center">
           <%= date.day %>
         </div>
@@ -52,9 +54,18 @@
 </script>
 
 <script type="text/javascript">
-          function onCalDblClick(date){
-            console.log(date)
-          }
+    function onCalDblClick(userId, date){
+      addEvent(userId, date);
+    }
+
+    async function addEvent(userId, startDate) {
+
+      var url = `users/${userId}/events/new?start_time=${startDate}`
+      if (url) {
+        window.location.replace(url);
+      }
+      return false;
+    }
 </script>
 
 <script type="module">

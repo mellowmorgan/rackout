@@ -25,6 +25,10 @@ class EventsController < ApplicationController
     if params[:is_work].present? && ActiveRecord::Type::Boolean.new.cast(params[:is_work]) == true
       @event.is_work = true
     end
+
+    if params[:start_time].present?
+      @event.start_time = Time.new(params[:start_time]&.to_date&.to_s)
+    end
   end
 
   # GET /events/1/edit
