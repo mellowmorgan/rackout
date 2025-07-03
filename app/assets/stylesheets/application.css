@@ -16,6 +16,12 @@
 nav{
   font-family: Arial, Helvetica, sans-serif;
 }
+a{
+  color:black;
+}
+a:hover{
+  color:darkmagenta;
+}
 body {
   color: black!important;
   background: url("sky.jpg");
@@ -42,9 +48,30 @@ body {
 .modal-content {
   background-color: #fefefe;
   margin: auto;
-  padding: 20px;
+  padding: 30px;
   border: 1px solid #888;
-  width: 80%;
+  width: 40%;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight:600;
+  font-size:20px;
+  color: darkmagenta;
+  letter-spacing: 1px;
+}
+.modal-buttons{
+  display:flex;
+  justify-content: space-between;
+  
+}
+#updateBtn, #dismissBtn, #dismissAllBtn{
+ display:inline;
+  width:30%;
+  padding:12px;
+}
+
+#eventsDropDown{
+  margin-bottom:24px;
+  font-size:18px;
+  font-family:Arial, Helvetica, sans-serif;
 }
 
 /* The Close Button */
@@ -80,6 +107,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   color: #333;
   background-color: #fff;
+  width:fit-content;
 }
 
 .simple-calendar time{
@@ -93,15 +121,24 @@ body {
 .simple-calendar .calendar-heading{
   padding:12px;
 }
+.table>:not(caption)>*>* {
+  box-shadow:none;
+}
 
 .day {
-  font-size:11px;
+  font-size:12px;
   padding:5px;
-  font-weight: 550;
+  font-weight: 500;
   border:1px solid #ccc;
   text-align:center;
 }
-
+.calendar-day{
+  min-height:100px;
+  max-height:100px;
+  overflow-y: scroll;
+  min-width:110px;
+  max-width:110px;
+}
 .card-header{ 
   padding:0px;
   background-color:transparent;
@@ -216,8 +253,9 @@ form .form-details .checkmark{
   padding:10px;
   border:none;
 }
+
 .rackout-logo a{
-  letter-spacing: 2px;
+  letter-spacing: 4px;
   text-decoration: none;
   color:white !important;
   font-weight:550;
@@ -228,12 +266,13 @@ nav h3{
 nav h4{
   color:white;
   font-weight:550;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
 }
 body h5{
   color:white; 
-  font-weight: 500;
+  font-weight: 550;
   letter-spacing: 1px;
+  font-size:18px;
 }
 
 nav{
@@ -243,4 +282,78 @@ nav{
 
 .net-earnings{
   margin-top:20px;
+  margin-bottom:24px;
+  color:white;
+  font-weight: 600;
+  font-family:Arial, Helvetica, sans-serif;
+  letter-spacing: 2px;
+  font-size:24px;
+}
+
+.space-between{
+  width:12px;
+}
+
+.event{
+  font-family:Arial, Helvetica, sans-serif;
+  letter-spacing: 1px;
+  font-size:20px;
+  color:white;
+  font-weight: 600;
+  margin-left:auto;
+  margin-right:auto;
+  margin-top: 28px;
+}
+.event-title{
+  font-weight:550; 
+  letter-spacing:2px; 
+  margin-bottom:16px;
+  text-decoratio
+}
+
+.earnings{
+  padding:18px;
+}
+.earnings h4, .expenses h4{
+  letter-spacing: 1px;
+}
+
+.expenses{
+  padding:18px;
+
+}
+.earnings-list{
+  margin-top:20px;
+  font-size:15px;
+  font-weight:500;
+  overflow-y: scroll;
+  padding-left:3px;
+  padding-right:3px;
+  margin-bottom:24px;
+  max-height:65%;
+}
+.expenses-list{
+  margin-top:20px;
+  font-size:15px;
+  font-weight:500;
+  overflow-y: scroll;
+  padding-left:3px;
+  padding-right:3px;
+  margin-bottom:24px;
+  max-height:65%;
+}
+.earning{
+  
+
+}
+.expense{
+
+}
+.little-earning-expense{
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius:5px;
+  padding:8px;
+} 
+.little-earning-expense p{
+  margin-bottom:0.5rem;
 }
