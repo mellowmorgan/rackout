@@ -1,16 +1,16 @@
-<div class="container-xl">
+<div class="container-xxl">
 
   <% if user_signed_in? %>
-  <div class="row">
+  <div class="row text-center">
   <div class="col-3">
-    <h5>Current monthly total: <%= current_total_month %></h5>
-    <%= button_to "Add Shift", new_user_event_path(user_id: current_user.id), params: { is_work: true}, method: :get %>
+    <h5>Current monthly total: <b><%= current_total_month %></b></h5>
+    <%= button_to "Add Shift", new_user_event_path(user_id: current_user.id), params: { is_work: true}, method: :get, class: "home-left-button" %>
 
-    <%= button_to "Add Event", new_user_event_path(user_id: current_user.id), method: :get %>
+    <%= button_to "Add Event", new_user_event_path(user_id: current_user.id), method: :get, class: "home-left-button" %>
   </div>
   <div class="col-9">
     <%= month_calendar(events: @events) do |date, events| %>
-      <div class="calendar-day">
+      <div class="calendar-day" ondblclick="onCalDblClick(<%= date %>);">
         <div class="day text-center">
           <%= date.day %>
         </div>
@@ -33,9 +33,11 @@
       <span class="close">&times;</span>
       <p>You have past shifts that need updating.</p>
        <select id="eventsDropDown"></select>
-      <button id="updateBtn">Update</button>
-      <button id="dismissBtn">Dismiss</button>
-      <button id="dismissAllBtn">Dismiss All</button>
+      <div class="modal-buttons">
+        <button id="updateBtn">Update</button>
+        <button id="dismissBtn">Dismiss</button>
+        <button id="dismissAllBtn">Dismiss All</button>
+      </div>
     </div>
   </div>
 
@@ -50,7 +52,9 @@
 </script>
 
 <script type="text/javascript">
-
+          function onCalDblClick(date){
+            console.log(date)
+          }
 </script>
 
 <script type="module">

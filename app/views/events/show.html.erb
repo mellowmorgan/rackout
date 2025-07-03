@@ -1,50 +1,58 @@
 <div class="container">
   <div class="row">
-    <div class="col-6">
+    <div class="col-lg-7 col-sm-12 d-flex flex-column">
 
-      <div>
-          <%= link_to "Add Earning", new_user_event_earning_path(@user, @event) %> |
-          <%= link_to "Add Expense", new_user_event_expense_path(@user, @event) %>
-      </div>
-      <div>
+      <div class="event">
         <%= render @event %>
   
         <%= link_to "Edit this event", edit_user_event_path(@user, @event) %>
 
-        <%= button_to "Destroy this event", user_event_path(@user, @event), method: :delete %>
+        <%= button_to "Delete event", user_event_path(@user, @event), method: :delete %>
       </div>
     </div>
 
 
-    <div class="col-6" >
-      <div class="container">
+    <div class="col-lg-5 col-sm-12" >
+      <div class="container earnings-expenses">
         <div class="row">
-          <div class="col-6">
-            <h3>Earnings</h3>
-            <div>
+          <div class="col-6 earnings">
+            <h4>Earnings</h4>
+            <div class="earnings-list">
+              <% last = @event&.earnings&.last %>
               <% @event.earnings.each do |earning| %>
+                <div class="little-earning-expense">
                 <%= render earning %>
-                <p>
-                  <%= link_to "Show this earning", user_event_earning_path(@user, @event, earning) %>
-                </p>
+                </div>
+                <% if (earning != last) %>
+                  <div style="margin-bottom:16px;"></div>
+                <% end %>
               <% end %>
+            </div>
+
+            <div>
+              <%= link_to "Add Earning", new_user_event_earning_path(@user, @event) %>
             </div>
           </div>
             
-          <div class="col-6">
-            <h3>Expenses</h3>
-
+          <div class="col-6 expenses">
+            <h4>Expenses</h4>
+                <div class="expenses-list">
             <% @event.expenses.each do |expense| %>
+              <div class="little-earning-expense">
               <%= render expense %>
-              <p>
-                <%= link_to "Show this expense", user_event_expense_path(@user, @event, expense) %>
-              </p> 
+              </div>
+              <% if (expense != last) %>
+                  <div style="margin-bottom:16px;"></div>
+                <% end %>
+        
             <% end %>
-      
-
+              </div>
+          
+            <div>
+              <%= link_to "Add Expense", new_user_event_expense_path(@user, @event) %>
             </div>
+          </div>
         </div>
-
         <div class="row net-earnings">
           <div class="col-12">
             Net earnings: <%= @event.earnings.sum(:amount) - @event.expenses.sum(:amount) %>

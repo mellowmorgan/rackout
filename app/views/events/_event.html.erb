@@ -1,19 +1,20 @@
 <div id="<%= dom_id event %>">
-  <p>
-    <strong>Title:</strong>
+  <h2 class="event-title">
     <%= event.title %>
-  </p>
+  </h2>
 
+  <% if event.description.present? %>
   <p>
     <strong>Description:</strong>
     <%= event.description %>
   </p>
-
-  <p>
-    <strong>Location:</strong>
-    <%= event.location %>
-  </p>
-
+  <% end %>
+  <% if event.location.present? %>
+    <p>
+      <strong>Location:</strong>
+      <%= event.location %>
+    </p>
+  <% end %>
   <p>
     <strong>Start time:</strong>
     <%=  event.start_time.strftime('%B %e, %Y %l:%M %p') %>
@@ -28,6 +29,11 @@
 
   <p>
     <strong>Is this a work shift?:</strong>
-    <%= event.is_work %>
+    <% if event.is_work %>
+      Yes
+    <% else %>
+      No
+    <% end %>
+
   </p>
 </div>

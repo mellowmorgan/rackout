@@ -4,5 +4,5 @@
   <%= link_to "Edit this earning", edit_user_event_earning_path(@user,@event, @earning) %> |
   <%= link_to "Back to event", user_event_path(@user,@event) %>
 
-  <%= button_to "Destroy this earning", user_event_earning_path(@user,@event, @earning), method: :delete %>
+  <%= button_to "Delete earning", user_event_earning_path(@user,@event, @earning), method: :delete %>
 </div>
