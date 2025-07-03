@@ -13,6 +13,7 @@
   
     <%= month_calendar(events: @events) do |date, events| %>
       <div class="calendar-day" ondblclick="onCalDblClick(<%= current_user.id %>, <%= date.year %>+'-'+<%= date.month %>+'-'+<%= date.day %>);">
+        <span class="tooltiptext">Double click to <br />add new event</span>
         <div class="day text-center">
           <%= date.day %>
         </div>
