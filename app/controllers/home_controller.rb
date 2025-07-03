@@ -3,12 +3,18 @@ class HomeController < ApplicationController
 
   def index
     if user_signed_in?
-      @events = current_user.events.where(start_time: Time.now.beginning_of_month.beginning_of_week..Time.now.end_of_month.end_of_week)
+      if params["start_date"]
+        date = params["start_date"].to_date
+      else
+        date = Time.now
+      end
+      @events = current_user.events.where(start_time: date.beginning_of_month.beginning_of_week..date.end_of_month.end_of_week)
 
       @events_need_updating = current_user.events.needs_updating.to_json
+ 
+    else
+      redirect_to new_user_session_path
     end
-
-    render
   end 
 
   def dismiss_all
