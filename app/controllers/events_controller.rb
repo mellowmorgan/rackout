@@ -50,12 +50,13 @@ class EventsController < ApplicationController
 
   # PATCH/PUT /events/1 or /events/1.json
   def update
+    @user = @event.user
     respond_to do |format|
       if @event.update(event_params)
         format.json { 
           render json: @event, status: :ok }
         format.html { 
-          redirect_to user_event_path(@event), notice: "Event was successfully updated." }
+          redirect_to user_event_path(@user, @event), notice: "Event was successfully updated." }
 
       else
         format.html { render :edit, status: :unprocessable_entity }
