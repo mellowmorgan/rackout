@@ -41,7 +41,7 @@ class ExpensesController < ApplicationController
     @user = @event.user
     respond_to do |format|
       if @expense.update(expense_params)
-        format.html { redirect_to user_event_expense_path(@user, @event, @expense), notice: "Expense was successfully updated." }
+        format.html { redirect_to user_event_path(@user, @event), notice: "Expense was successfully updated." }
       else
         format.html { render :edit, status: :unprocessable_entity }
       end

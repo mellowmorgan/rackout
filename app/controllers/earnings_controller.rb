@@ -41,7 +41,7 @@ class EarningsController < ApplicationController
     @user = @event.user
     respond_to do |format|
       if @earning.update(earning_params)
-        format.html { redirect_to user_event_earning_path(@user,@event,@earning), notice: "Earning was successfully updated." }
+        format.html { redirect_to user_event_path(@user, @event), notice: "Earning was successfully updated." }
       else
         format.html { render :edit, status: :unprocessable_entity }
       end

@@ -10,8 +10,8 @@
 
     <div>
       <%= link_to "Show this expense", user_event_expense_path(@user, @event, @expense) %> |
-      <%= link_to "Back to expenses", user_event_path(@user, @event) %>
+      <%= link_to "Back to expenses", user_event_path(@user, @event) %> | 
+      <%= link_to "Delete expense", user_event_expense_path(@user,@event, @expense), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'} %>
     </div>
   </div>
 </div>
-

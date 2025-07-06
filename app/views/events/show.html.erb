@@ -21,7 +21,10 @@
               <% last = @event&.earnings&.last %>
               <% @event.earnings.each do |earning| %>
                 <div class="little-earning-expense">
-                <%= render earning %>
+                
+                  <%= link_to edit_user_event_earning_path(@user, @event, earning) do %>
+                    <%= render earning %>
+                  <% end %>
                 </div>
                 <% if (earning != last) %>
                   <div style="margin-bottom:16px;"></div>
@@ -39,7 +42,10 @@
                 <div class="expenses-list">
             <% @event.expenses.each do |expense| %>
               <div class="little-earning-expense">
-              <%= render expense %>
+                <%= link_to edit_user_event_expense_path(@user,@event,expense)  do %>
+                  <%= render expense %>
+                <% end %>
+              
               </div>
               <% if (expense != last) %>
                   <div style="margin-bottom:16px;"></div>

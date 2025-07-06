@@ -10,7 +10,8 @@
 
     <div>
       <%= link_to "Show this earning", user_event_earning_path(@user, @event, @earning) %> |
-      <%= link_to "Back to earnings", user_event_path(@user, @event) %>
+      <%= link_to "Back to earnings", user_event_path(@user, @event) %> |  
+      <%= link_to "Delete earning", user_event_earning_path(@user,@event, @earning), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'} %>
     </div>
   </div>
 </div>
