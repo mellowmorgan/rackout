@@ -1,5 +1,5 @@
 export function updateModal(data) {
-  if (data && data.length > 1){
+  if (data && data.length >= 1){
     var btn = document.getElementById("updateBtn");
     var dismiss = document.getElementById("dismissBtn");
     var dismissAll = document.getElementById("dismissAllBtn");
