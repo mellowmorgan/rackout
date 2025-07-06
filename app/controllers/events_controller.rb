@@ -12,9 +12,10 @@ class EventsController < ApplicationController
   def show
     @event = Event.find(params[:id])
     @user = User.find(params[:user_id])
-    if @event.needs_updating?
-      flash.now.alert = "You are missing earnings/expenses for this event! Please Add."
-    end
+    # commented this out because I realized this flash is annoying
+    # if @event.needs_updating?
+    #   flash.now.alert = "You are missing earnings/expenses for this event! Please Add."
+    # end
   end
 
   # GET /events/new

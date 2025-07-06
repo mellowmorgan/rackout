@@ -349,7 +349,7 @@ nav{
   padding-left:3px;
   padding-right:3px;
   margin-bottom:24px;
-  max-height:65%;
+  max-height:70%;
 }
 .expenses-list{
   margin-top:20px;
@@ -359,7 +359,7 @@ nav{
   padding-left:3px;
   padding-right:3px;
   margin-bottom:24px;
-  max-height:65%;
+  max-height:70%;
 }
 .earning{
   
@@ -373,6 +373,9 @@ nav{
   border-radius:5px;
   padding:8px;
 } 
+.little-earning-expense a{
+  text-decoration: none;
+}
 .little-earning-expense p{
   margin-bottom:0.5rem;
 }
